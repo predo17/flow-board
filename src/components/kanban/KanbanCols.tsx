@@ -10,16 +10,32 @@ interface KanbanColumnProps {
   onDropTodo: (status: TodoStatus) => void;
 }
 
-export function KanbanColumn({ title, icon, children, status, onDropTodo }: KanbanColumnProps) {
+export function KanbanColumn({
+  title,
+  icon,
+  children,
+  status,
+  onDropTodo,
+}: KanbanColumnProps) {
   return (
     <section
       role="list"
       aria-label={title}
       onDragOver={(e) => e.preventDefault()}
       onDrop={() => onDropTodo(status)}
-      className="flex flex-col gap-4"
+      className="shrink-0"
     >
-      <Card className="bg-black/50 border border-white/10 backdrop-blur">
+      <Card
+        className="
+          bg-black/50 border border-white/10 backdrop-blur
+          w-[280px]
+          sm:w-[340px]
+          md:w-[440px]
+          min-h-[75vh]
+          lg:min-h-[80vh]
+          flex flex-col
+        "
+      >
         <CardHeader className="flex flex-row items-center gap-2">
           <span className="text-blue-400">{icon}</span>
           <CardTitle className="text-sm font-semibold uppercase tracking-wide text-white">
@@ -27,7 +43,7 @@ export function KanbanColumn({ title, icon, children, status, onDropTodo }: Kanb
           </CardTitle>
         </CardHeader>
 
-        <CardContent className="flex flex-col gap-3">
+        <CardContent className="flex-1 flex flex-col gap-3  overflow-y-auto">
           {children}
         </CardContent>
       </Card>
