@@ -1,3 +1,4 @@
+import { KanbanHeader } from "./KanbanHeade";
 import { KanbanColumn } from "@/components/kanban/KanbanCols";
 import { KanbanCard } from "@/components/kanban/KanbanCard";
 import { ListTodo, Loader2, CheckCircle2 } from "lucide-react";
@@ -12,9 +13,11 @@ const todos: Todo[] = [
 export default function KanbanBoard() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-black to-gray-950">
-      {/* background effects omitidos para foco */}
 
-      <div className="relative max-w-8xl mx-auto p-4">
+      <KanbanHeader onReset={() => { }} isLoading={false} />
+
+      {/* background effects omitidos para foco */}
+      <div className="relative max-w-8xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
           <KanbanColumn title="To Do" icon={<ListTodo size={18} />}>
