@@ -1,12 +1,14 @@
-import { KanbanSquare, RotateCcw } from "lucide-react";
+import { KanbanSquare, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
 
-interface KanbanHeaderProps {
-    onReset: () => void;
-    isLoading: boolean;
-}
+export function KanbanHeader() {
+    const { signOut, user } = useAuth();
 
-export function KanbanHeader({ onReset, isLoading }: KanbanHeaderProps) {
+    const handleSignOut = async () => {
+        await signOut();
+    };
+
     return (
         <header
             className="
@@ -34,22 +36,21 @@ export function KanbanHeader({ onReset, isLoading }: KanbanHeaderProps) {
                                 FlowBoard
                             </h1>
                             <p className="text-[10px] sm:text-sm text-white/60">
-                                Organize suas tarefas com foco e clareza
+                                {user?.email ? `Olá, ${user.email.split('@')[0]}` : 'Organize suas tarefas com foco e clareza'}
                             </p>
                         </div>
                     </div>
 
-                    {/* Action */}
+                    {/* Actions */}
                     <Button
-                        onClick={onReset}
-                        disabled={isLoading}
+                        onClick={handleSignOut}
                         variant="outline"
                         size="sm"
-                        aria-label="Reset board to initial state"
-                        className="bg-white/5 border-white/20 text-white disabled:opacity-50 cursor-pointer"
+                        aria-label="Sair"
+                        className="bg-white/5 border-white/20 text-white hover:text-white hover:bg-red-500/20 hover:border-red-500/50 transition-colors duration-300"
                     >
-                        <RotateCcw className="mr-2 h-4 w-4" aria-hidden="true" />
-                        Reset
+                        <LogOut className="mr-2 h-4 w-4" aria-hidden="true" />
+                        Sair
                     </Button>
                 </div>
             </div>
