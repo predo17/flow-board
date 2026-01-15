@@ -131,7 +131,7 @@ export default function KanbanBoard() {
         <KanbanHeader/>
       </div>
 
-      <div className="w-full overflow-x-auto">
+      <div className="w-full overflow-x-auto kanban-scroll">
         <div className="min-w-fit p-4">
           <div className="flex min-w-max md:justify-start xl:justify-center gap-6">
 
@@ -140,6 +140,7 @@ export default function KanbanBoard() {
             <KanbanColumn title="To Do" icon={<ListTodo size={18} />} status="todo" onDropTodo={handleDrop}>
               {todos
                 .filter(t => t.status === "todo")
+                .sort((r, a) => r.id - a.id)
                 .map(todo => (
                   <KanbanCard 
                     key={todo.id} 

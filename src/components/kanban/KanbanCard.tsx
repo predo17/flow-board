@@ -21,7 +21,7 @@ export function KanbanCard({ todo, onDragStart, onDelete }: KanbanCardProps) {
       className="bg-black/40 border border-white/10 text-white 
                  hover:border-blue-500/40 transition 
                  focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-grab active:cursor-grabbing
-                 relative group"
+                 relative group m-0.5"
     >
       <CardContent className="flex items-start gap-3 p-4">
         <GripVertical className="text-white/40 mt-1" size={18} />
@@ -38,7 +38,7 @@ export function KanbanCard({ todo, onDragStart, onDelete }: KanbanCardProps) {
               e.stopPropagation();
               onDelete(todo.id);
             }}
-            className="absolute top-2 right-2 h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity
+            className="absolute top-2 right-2 h-6 w-6 p-0 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity
                        hover:bg-red-500/20 hover:text-red-400 text-white/60"
             aria-label="Excluir tarefa"
           >
