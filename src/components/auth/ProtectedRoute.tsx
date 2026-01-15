@@ -18,7 +18,7 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
     if (loading) {
       timer = setTimeout(() => {
         setShowLoader(true)
-      }, 500) // delay real do loader
+      }, 1600) 
     } else {
       setShowLoader(false)
     }
@@ -30,7 +30,7 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-gray-950 via-black to-gray-950">
         <div className="text-center space-y-4">
-          <Loader2 className="h-12 w-12 animate-spin mx-auto text-primary" />
+          <Loader2 className="h-12 w-12 animate-spin mx-auto text-blue-400" />
           <p className="text-lg font-medium text-muted-foreground">
             Carregando...
           </p>

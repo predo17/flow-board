@@ -74,29 +74,38 @@ pnpm dev
 
 ```
 flow-board/
-├── public/                 # Arquivos estáticos
+├── public/
 ├── src/
-│   ├── components/         # Componentes React
-│   │   ├── kanban/         # Componentes do Kanban Board
-│   │   │   ├── KanbanBoard.tsx    # Componente principal
-│   │   │   ├── KanbanCard.tsx     # Card de tarefa
-│   │   │   ├── KanbanCols.tsx     # Coluna do Kanban
-│   │   │   └── KanbanHeade.tsx    # Cabeçalho do board
-│   │   └── ui/             # Componentes UI reutilizáveis
+│   ├── components/             # Componentes React
+│   │   ├── AnimatedList.tsx    # Lista animada reutilizável
+│   │   ├── auth/               # Autenticação e rotas protegidas
+│   │   │   ├── LoginForm.tsx
+│   │   │   └── ProtectedRoute.tsx
+│   │   ├── kanban/             # Componentes do Kanban Board
+│   │   │   ├── AddTaskColumn.tsx
+│   │   │   ├── DeleteConfirmDialog.tsx
+│   │   │   ├── KanbanBoard.tsx
+│   │   │   ├── KanbanCard.tsx
+│   │   │   ├── KanbanCols.tsx
+│   │   │   └── KanbanHeade.tsx
+│   │   └── ui/                 # Componentes UI reutilizáveis
 │   │       ├── button.tsx
-│   │       └── card.tsx
-│   ├── lib/               # Utilitários e helpers
+│   │       ├── card.tsx
+│   │       └── dialog.tsx
+│   ├── contexts/               # Contextos React
+│   │   └── AuthContext.tsx
+│   ├── lib/                    # Integrações e helpers
+│   │   ├── supabase.ts
+│   │   ├── todos.ts
 │   │   └── utils.ts
-│   ├── types/             # Definições de tipos TypeScript
+│   ├── types/                  # Tipos TypeScript
 │   │   └── todo.ts
-│   ├── utils/             # Funções utilitárias
-│   │   └── Tarefas.ts     # Dados iniciais das tarefas
-│   ├── App.tsx            # Componente raiz
-│   ├── main.tsx           # Ponto de entrada
-│   └── index.css          # Estilos globais
+│   ├── App.tsx                 # Componente raiz
+│   ├── main.tsx                # Ponto de entrada
+│   └── index.css               # Estilos globais
 ├── package.json
-├── tsconfig.json          # Configuração TypeScript
-├── vite.config.ts         # Configuração Vite
+├── tsconfig.json               # Configuração TypeScript
+├── vite.config.ts              # Configuração Vite
 └── README.md
 ```
 
@@ -107,28 +116,16 @@ flow-board/
 - Feedback visual durante o arrasto
 - Atualização automática do estado
 
-### Persistência
-- Todas as mudanças são salvas automaticamente no localStorage
-- Dados persistem após recarregar a página
-- Restauração automática do estado salvo
+### Autenticação & integração
+- Integração com Supabase para autenticação de usuários
+- Proteção de rotas com `ProtectedRoute`
+- Formulário de login simples
 
-### Reset
-- Botão de reset no cabeçalho
-- Restaura todas as tarefas para o estado inicial
-- Animação de loading durante o processo
+### Adicionar/Remover Tarefas
+- Formulário para adicionar uma nova tarefa
+- Botão para remover tarefas somente na coluna "DONE"
 
 ## 🎨 Customização
-
-### Modificar Tarefas Iniciais
-
-Edite o arquivo `src/utils/Tarefas.ts` para alterar as tarefas iniciais:
-
-```typescript
-export const initialTodos: Todo[] = [
-  { id: 1, title: "Sua tarefa", status: "todo" },
-  // ...
-];
-```
 
 ### Personalizar Estilos
 
@@ -136,10 +133,10 @@ Os estilos são gerenciados pelo TailwindCSS. Edite as classes nos componentes o
 
 ## 🔮 Melhorias Futuras
 
-- [ ] Integração com API REST
-- [ ] Autenticação de usuários
+- [x] Integração com API REST
+- [x] Autenticação de usuários
 - [ ] Múltiplos boards
 - [ ] Edição de tarefas inline
-- [ ] Adicionar/remover tarefas
+- [x] Adicionar/remover tarefas
 - [ ] Filtros e busca
 

@@ -39,7 +39,7 @@ export function KanbanColumn({
         <div className="flex-1 px-3 py-2">
           <AnimatedList
             className="w-full"
-            maxHeight="calc(75vh - 5.5rem)"
+            maxHeight="calc(70vh - 5.5rem)"
             showGradients={true}
             enableArrowNavigation={false}
             displayScrollbar={true}

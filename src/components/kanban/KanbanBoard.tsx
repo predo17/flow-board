@@ -14,22 +14,18 @@ import type { Todo, TodoStatus } from "@/types/todo";
 export default function KanbanBoard() {
   const { user } = useAuth();
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [draggedTodoId, setDraggedTodoId] = useState<number | null>(null);
   const [todoToDelete, setTodoToDelete] = useState<number | null>(null);
 
   const loadTodos = useCallback(async () => {
     if (!user) return;
     
-    setIsLoading(true);
     try {
       const fetchedTodos = await fetchTodos(user.id);
       setTodos(fetchedTodos);
     } catch (error) {
       console.error("Erro ao carregar tarefas:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    } 
   }, [user]);
 
   // Carrega tarefas do Supabase quando o usuário estiver logado
@@ -111,17 +107,6 @@ export default function KanbanBoard() {
 
   function handleCancelDelete() {
     setTodoToDelete(null);
-  }
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-gray-950 via-black to-gray-950">
-        <div className="text-center space-y-4">
-          <Loader2 className="h-12 w-12 animate-spin mx-auto text-blue-400" aria-hidden="true" />
-          <p className="text-lg font-medium text-white/70">Carregando suas tarefas...</p>
-        </div>
-      </div>
-    );
   }
 
   return (

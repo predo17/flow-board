@@ -64,11 +64,11 @@ export function AddTaskColumn({ onAddTask }: AddTaskColumnProps) {
             <textarea
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Digite o título da tarefa..."
+              placeholder="Descreva sua tarefa."
               className="w-full px-4 py-3 rounded-md border border-white/20 bg-black/40 
                          text-white placeholder:text-white/40 
                          focus:outline-none focus:ring-2 focus:ring-blue-500
-                         resize-none min-h-[100px]"
+                         resize-none min-h-25"
               disabled={isAdding}
             />
 

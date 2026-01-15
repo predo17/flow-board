@@ -38,7 +38,7 @@ export function KanbanCard({ todo, onDragStart, onDelete }: KanbanCardProps) {
               e.stopPropagation();
               onDelete(todo.id);
             }}
-            className="absolute top-2 right-2 h-6 w-6 p-0 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity
+            className="absolute top-2 right-2 h-6 w-6 p-0 opacity-0 group-hover:opacity-100 focus:opacity-100 group-focus:opacity-100 transition-opacity
                        hover:bg-red-500/20 hover:text-red-400 text-white/60"
             aria-label="Excluir tarefa"
           >
