@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import AnimatedList from "@/components/AnimatedList";
 import type { TodoStatus } from "@/types/todo";
 
 interface KanbanColumnProps {
@@ -27,15 +28,7 @@ export function KanbanColumn({
     >
       <Card
         className="
-          bg-black/50 border border-white/10 backdrop-blur
-          w-[280px]
-          sm:w-[340px]
-          md:w-[440px]
-          min-h-[75vh]
-          lg:min-h-[80vh]
-          flex flex-col
-        "
-      >
+          bg-black/50 border border-white/10 backdrop-blur w-[clamp(240px,23rem,39rem)] min-h-[75vh] lg:min-h-[80vh] flex flex-col">
         <CardHeader className="flex flex-row items-center gap-2">
           <span className="text-blue-400">{icon}</span>
           <CardTitle className="text-sm font-semibold uppercase tracking-wide text-white">
@@ -43,9 +36,18 @@ export function KanbanColumn({
           </CardTitle>
         </CardHeader>
 
-        <CardContent className="flex-1 flex flex-col gap-3  overflow-y-auto">
-          {children}
-        </CardContent>
+        <div className="flex-1 px-3 py-2">
+          <AnimatedList
+            className="w-full"
+            maxHeight="calc(75vh - 5.5rem)"
+            showGradients={true}
+            enableArrowNavigation={false}
+            displayScrollbar={true}
+            onItemSelect={undefined}
+          >
+            {children}
+          </AnimatedList>
+        </div>
       </Card>
     </section>
   );

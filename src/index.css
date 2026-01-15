@@ -121,3 +121,35 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Scroll horizontal Kanban */
+.kanban-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+
+.kanban-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.kanban-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    90deg,
+    rgba(59,130,246,0.4),
+    rgba(138, 92, 246, 0.164)
+  );
+  border-radius: 999px;
+}
+
+.kanban-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(59, 131, 246, 0.527),
+    rgba(138, 92, 246, 0.137)
+  );
+}
+
+.kanban-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(21, 99, 216, 0.5) transparent;
+  opacity: 40px;
+}
